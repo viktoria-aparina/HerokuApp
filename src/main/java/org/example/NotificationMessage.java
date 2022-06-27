@@ -1,7 +1,6 @@
 package org.example;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,9 +9,8 @@ public class NotificationMessage extends BaseTest {
     public void notificationMessage() {
         driver.findElement(By.linkText("Notification Messages")).click();
         driver.findElement(By.linkText("Click here")).click();
-        Actions action = new Actions(driver);
-        action.moveToElement(driver.findElement(By.cssSelector("div.flash"))).build().perform();
-        Assert.assertEquals(driver.findElement(By.cssSelector("div.flash")).getText(), "Action successful");
-        //вообще не понимаю как это работает, нашла в интернете)
+        String notificationMessageFull = driver.findElement(By.className("notice")).getText();
+        String notificationMessage = notificationMessageFull.substring(0, notificationMessageFull.length()-1).strip();
+        Assert.assertEquals(notificationMessage, "Action unsuccesful, please try again");
     }
 }
