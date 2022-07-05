@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.HashMap;
 
 public class BaseTest {
+
     public WebDriver driver;
 
     @BeforeMethod
@@ -19,8 +20,7 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
 
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-        chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("C:\\Users\\User\\Downloads", System.getProperty("user.dir"));
+        chromePrefs.put("download.default_directory", System.getProperty("user.dir"));
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs",chromePrefs);
         driver = new ChromeDriver(options);
@@ -29,7 +29,6 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get("http://the-internet.herokuapp.com/");
     }
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.quit();

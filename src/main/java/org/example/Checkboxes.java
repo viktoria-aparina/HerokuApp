@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import javax.lang.model.element.Element;
 import java.util.List;
 
 public class Checkboxes extends BaseTest {

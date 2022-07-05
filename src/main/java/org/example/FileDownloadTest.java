@@ -16,7 +16,7 @@ public class FileDownloadTest extends BaseTest {
         driver.findElement(By.linkText("sample.pdf")).click();
         Thread.sleep(1000);
 
-        File folder = new File("C:\\Users\\User\\Downloads");
+        File folder = new File(System.getProperty("user.dir"));
         File[] listOfFiles = folder.listFiles();
 
         boolean found = false;
